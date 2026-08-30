@@ -53,19 +53,26 @@ export default function PoDetailPage() {
   const invoices = docsQuery.data?.invoice || [];
   const po = docsQuery.data?.po?.[0] || null;
 
-  useEffect(() => {
-    if (!activeGrnId && grns.length > 0) setActiveGrnId(grns[0]._id);
-  }, [grns, activeGrnId]);
+useEffect(() => {
+  const activeGrns = grns.filter((g: any) => !g.isDuplicate);
+
+  if (!activeGrnId && activeGrns.length > 0) {
+    setActiveGrnId(activeGrns[0]._id);
+  }
+}, [grns, activeGrnId]);
 
   useEffect(() => {
     if (!activeInvoiceId && invoices.length > 0) setActiveInvoiceId(invoices[0]._id);
   }, [invoices, activeInvoiceId]);
 
-  const activeGrn = useMemo(() => grns.find((g: any) => g._id === activeGrnId) || null, [grns, activeGrnId]);
-  const activeInvoice = useMemo(
-    () => invoices.find((i: any) => i._id === activeInvoiceId) || null,
-    [invoices, activeInvoiceId]
-  );
+const activeGrn = useMemo(
+  () => grns.find((g: any) => g._id === activeGrnId && !g.isDuplicate) || null,
+  [grns, activeGrnId]
+);
+const activeInvoice = useMemo(
+  () => invoices.find((i: any) => i._id === activeInvoiceId) || null,
+  [invoices, activeInvoiceId]
+);
 
   const match = matchQuery.data;
   const items = match?.items || [];
@@ -88,7 +95,12 @@ export default function PoDetailPage() {
           </button>
         </div>
 
-        <TopTabs active={activeTab} onChange={setActiveTab} invoiceCount={invoices.length} grnCount={grns.length} />
+       <TopTabs
+  active={activeTab}
+  onChange={setActiveTab}
+  invoiceCount={invoices.length}
+  grnCount={grns.filter((g: any) => !g.isDuplicate).length}
+/>
 
         {activeTab === 'po' && (
           <div className="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -119,10 +131,16 @@ export default function PoDetailPage() {
         {activeTab === 'delivery' && (
           <div className="flex-1 flex flex-col">
             <SubTabPills
-              items={grns.map((g: any) => ({ id: g._id, label: `GRN: ${g.grnNumber}`, isDuplicate: g.isDuplicate }))}
-              activeId={activeGrnId}
-              onChange={setActiveGrnId}
-            />
+  items={grns
+    .filter((g: any) => !g.isDuplicate)
+    .map((g: any) => ({
+      id: g._id,
+      label: `GRN: ${g.grnNumber}`,
+      isDuplicate: false
+    }))}
+  activeId={activeGrnId}
+  onChange={setActiveGrnId}
+/>
             {activeGrn && (
               <div className="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <DocumentForm

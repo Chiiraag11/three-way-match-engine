@@ -4,6 +4,20 @@ Full-stack app that ingests Purchase Order, GRN, and Invoice documents (PDF/imag
 structured data with the Gemini API, resolves line items against a SKU Master catalogue, and
 recomputes a three-way match on every read.
 
+## Screenshots
+
+### Purchase Order
+![Purchase Order](./screenshots/purchase.png)
+
+### Delivery / GRN
+![Delivery](./screenshots/delivery.png)
+
+### Invoice / Fulfillment
+![Invoice](./screenshots/fulfillment.png)
+
+### Summary
+![Summary](./screenshots/summary.png)
+
 ## Repo layout
 
 ```
