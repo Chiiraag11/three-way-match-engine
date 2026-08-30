@@ -1,0 +1,136 @@
+{
+  "info": {
+    "name": "Three-Way Match Engine API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "token", "value": "" },
+    { "key": "poNumber", "value": "CI4PO05788" }
+  ],
+  "item": [
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] }
+      }
+    },
+    {
+      "name": "Documents - Upload",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "" },
+            { "key": "documentType", "value": "po", "type": "text" }
+          ]
+        },
+        "url": { "raw": "{{baseUrl}}/documents/upload", "host": ["{{baseUrl}}"], "path": ["documents", "upload"] }
+      }
+    },
+    {
+      "name": "Documents - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/documents?poNumber={{poNumber}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["documents"],
+          "query": [{ "key": "poNumber", "value": "{{poNumber}}" }]
+        }
+      }
+    },
+    {
+      "name": "Documents - Get by ID",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/documents/:id", "host": ["{{baseUrl}}"], "path": ["documents", ":id"] }
+      }
+    },
+    {
+      "name": "Documents - Get file",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/documents/:id/file", "host": ["{{baseUrl}}"], "path": ["documents", ":id", "file"] }
+      }
+    },
+    {
+      "name": "Match - Get by PO Number",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/match/{{poNumber}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["match", "{{poNumber}}"]
+        }
+      }
+    },
+    {
+      "name": "Summary - Get by PO Number",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": {
+          "raw": "{{baseUrl}}/summary/{{poNumber}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["summary", "{{poNumber}}"]
+        }
+      }
+    },
+    {
+      "name": "SKU Master - List",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/masters/sku", "host": ["{{baseUrl}}"], "path": ["masters", "sku"] }
+      }
+    },
+    {
+      "name": "SKU Master - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"skuErpCode\": \"11423\",\n  \"name\": \"PSM Cheesy Spicy Veg Momos 24 Pcs\",\n  \"eanCode\": null,\n  \"hsnCode\": \"19022010\",\n  \"uom\": \"PKT\",\n  \"agreedRate\": 220.76,\n  \"mrp\": 305,\n  \"priceTolerance\": 0.05\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/masters/sku", "host": ["{{baseUrl}}"], "path": ["masters", "sku"] }
+      }
+    },
+    {
+      "name": "SKU Master - Update",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": { "mode": "raw", "raw": "{\n  \"agreedRate\": 225.0\n}" },
+        "url": { "raw": "{{baseUrl}}/masters/sku/:id", "host": ["{{baseUrl}}"], "path": ["masters", "sku", ":id"] }
+      }
+    },
+    {
+      "name": "SKU Master - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+        "url": { "raw": "{{baseUrl}}/masters/sku/:id", "host": ["{{baseUrl}}"], "path": ["masters", "sku", ":id"] }
+      }
+    }
+  ]
+}

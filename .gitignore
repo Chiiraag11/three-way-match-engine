@@ -1,0 +1,8 @@
+node_modules/
+.env
+backend/uploads/*
+!backend/uploads/.gitkeep
+frontend/.next/
+frontend/out/
+*.log
+.DS_Store

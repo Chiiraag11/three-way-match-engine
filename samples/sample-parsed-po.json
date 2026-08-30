@@ -1,0 +1,12 @@
+{
+  "poNumber": "CI4PO05788",
+  "poDate": "2026-03-17",
+  "vendorName": "M/s AFP",
+  "items": [
+    { "itemCode": "11423", "description": "PSM Cheesy Spicy Veg Momos 24.0 Pieces", "quantity": 50 },
+    { "itemCode": "18003", "description": "Meatigo Chicken Curry Cut Skinless Frozen 450.0 g", "quantity": 120 },
+    { "itemCode": "18004", "description": "Meatigo Chicken Boneless Breast Frozen 450.0 g", "quantity": 540 },
+    { "itemCode": "205950", "description": "PSM Frozen Pork Pepperoni Salami 100.0 g", "quantity": 40 },
+    { "itemCode": "33390", "description": "PSM Chicken Seekh Kebab 500.0 g", "quantity": 272 }
+  ]
+}

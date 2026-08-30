@@ -1,0 +1,12 @@
+{
+  "invoiceNumber": "IN25MH2504251",
+  "poNumber": "CI4PO05788",
+  "invoiceDate": "2026-03-24",
+  "items": [
+    { "itemCode": "11423", "description": "PSM Cheesy Spicy Vegetable Momos 24Pcs", "quantity": 50, "unitRate": 220.76, "mrp": 305.0 },
+    { "itemCode": "18003", "description": "Meatigo Chicken Curry Cuts 450g (5%)", "quantity": 30, "unitRate": 141.14, "mrp": 195.0 },
+    { "itemCode": "18004", "description": "Meatigo Chicken Boneless Breast 450g (5%)", "quantity": 35, "unitRate": 199.05, "mrp": 275.0 },
+    { "itemCode": "205950", "description": "PSM Frozen Chicken Pepperoni Salami 100g", "quantity": 40, "unitRate": 133.9, "mrp": 210.0 },
+    { "itemCode": "99999", "description": "Unlisted promotional sample item", "quantity": 5, "unitRate": 50.0, "mrp": 0 }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "grnNumber": "CI4000020234",
+  "poNumber": "CI4PO05788",
+  "grnDate": "2026-03-24",
+  "items": [
+    { "itemCode": "11423", "description": "PSM Cheesy Spicy Veg Momos 24.0 Pieces", "receivedQuantity": 50, "mrp": 305.0 },
+    { "itemCode": "18003", "description": "Meatigo Chicken Curry Cut Skinless Frozen 450.0 g", "receivedQuantity": 30, "mrp": 195.0 },
+    { "itemCode": "18004", "description": "Meatigo Chicken Boneless Breast Frozen 450.0 g", "receivedQuantity": 30, "mrp": 275.0 },
+    { "itemCode": "205950", "description": "PSM Frozen Pork Pepperoni Salami 100.0 g", "receivedQuantity": 40, "mrp": 185.0 },
+    { "itemCode": "33390", "description": "PSM Chicken Seekh Kebab 500.0 g", "receivedQuantity": 272, "mrp": 315.0 }
+  ]
+}
